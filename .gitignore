@@ -1,0 +1,15 @@
+# Directories
+/bin
+/logs
+/tmp
+/test
+/vendor/**
+
+# Files
+.DS_Store
+
+# Editor swap files
+*.swp
+*.swo
+*.swn
+*.test
