@@ -2,10 +2,32 @@
 
 该项目主要是基于阿里云、腾讯云(Dnspod)等云解析DNS开放的API编写的客户端工具。
 
-## 使用手册
+## 手册
 
 - [x] [阿里云 DNS 客户端工具使用手册](./docs/DNSCTL-ALIYUN.md)
 - [x] [腾讯云 DNS 客户端工具使用手册](./docs/DNSCTL-TENCENT.md)
+
+## 帮助
+
+-  Dnsctl - 一个 `aliyun` 和 `tencent` 集合的工具，即同时拥有管理阿里云解析DNS和腾讯云解析DNS功能。
+
+```bash
+dnsctl is a simple command line client for cloud dns.
+
+Usage:
+  dnsctl [command]
+
+Available Commands:
+  aliyun      阿里云 云DNS
+  help        Help about any command
+  tencent     腾讯云 云DNS
+  version     版本号
+
+Flags:
+  -h, --help   help for dnsctl
+
+Use "dnsctl [command] --help" for more information about a command.
+```
 
 - Aliyun
 
@@ -167,6 +189,26 @@ make build-in-docker
 git clone github.com/chinatree/dnsctl.git
 cd dnsctl
 
+## 单架构
+BUILD_FROM="alpine:3.14.2"
+IMAGE="chinatree/dnsctl:0.0.1-alpine"
+docker build --no-cache \
+	-t ${IMAGE} \
+	--build-arg BUILD_FROM=${BUILD_FROM} \
+	-f build/docker/Dockerfile \
+	./build/docker
+
+## 多架构
+BUILD_FROM="alpine:3.14.2"
+IMAGE="chinatree/dnsctl:0.0.1-alpine"
+docker buildx build --no-cache \
+	-t ${IMAGE} \
+	--build-arg BUILD_FROM=${BUILD_FROM} \
+	-f build/docker/Dockerfile \
+	./build/docker \
+	--platform=linux/amd64,linux/arm64 \
+	--push
+
 
 # Aliyun
 ## 单架构
@@ -213,6 +255,17 @@ docker buildx build --no-cache \
 ```
 
 ## 容器
+
+- `chinatree/dnsctl:0.0.1-alpine`
+
+```bash
+docker run -it --rm \
+	-e ALIYUN_ACCESS_KEY_ID=xxxx \
+	-e ALIYUN_ACCESS_SECRET_ID=yyyy \
+	-e TENCENT_SECRET_ID=xxxx \
+	-e TENCENT_SECRET_KEY=yyyy \
+	chinatree/dnsctl:0.0.1-alpine
+```
 
 - `chinatree/dnsctl-aliyun:0.0.1-alpine`
 
