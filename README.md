@@ -5,7 +5,7 @@
 ## 使用手册
 
 - [x] [阿里云 DNS 客户端工具使用手册](./docs/DNSCTL-ALIYUN.md)
-- [ ] [腾讯云 DNS 客户端工具使用手册](./docs/DNSCTL-TENCENT.md)
+- [x] [腾讯云 DNS 客户端工具使用手册](./docs/DNSCTL-TENCENT.md)
 
 - Aliyun
 
@@ -29,6 +29,30 @@ Flags:
       --region-id string           区域ID (default "default")
 
 Use "dnsctl-aliyun [command] --help" for more information about a command.
+```
+
+- Tencent
+
+```bash
+dnsctl-tencent is a simple command line client for tencent dns.
+
+Usage:
+  dnsctl-tencent [command]
+
+Available Commands:
+  domain      域名管理
+  group       域名分组管理
+  help        Help about any command
+  record      域名解析管理
+  version     版本号
+
+Flags:
+  -h, --help                help for dnsctl-tencent
+      --region string       区域名称
+      --secret-id string    密钥ID
+      --secret-key string   加密密钥
+
+Use "dnsctl-tencent [command] --help" for more information about a command.
 ```
 
 ## 样例
@@ -82,6 +106,48 @@ $ dnsctl-aliyun record logs --domain yuntree.com --lang zh
 
 ![aliyun-record-list](./assets/aliyun-record-list.png)
 
+- Tencent
+
+```bash
+# 配置鉴权信息
+export TENCENT_SECRET_ID=xxxx
+export TENCENT_SECRET_KEY=yyyy
+
+# 添加域名分组
+$ dnsctl-tencent group add --name 测试分组
+# 获取域名分组列表
+$ dnsctl-tencent group list
+
+# 添加域名
+$ dnsctl-tencent domain add --name yuntree.com
+# 添加域名备注
+$ dnsctl-tencent domain remark --name yuntree.com --remark 国际域名
+# 获取域名列表
+$ dnsctl-tencent domain list
+
+# 添加解析记录
+$ dnsctl-tencent record add --domain yuntree.com --rr www --type A --value 1.1.1.1
+$ dnsctl-tencent record add --domain yuntree.com --rr cdn --type A --value 8.8.8.8
+# 添加域名解析备注
+$ dnsctl-tencent record remark --domain yuntree.com --id 927117504 --remark 官网
+$ dnsctl-tencent record remark --domain yuntree.com --id 927117560 --remark CDN分发
+# 设置域名解析状态
+$ dnsctl-tencent record status --domain yuntree.com --id 927117560 --status DISABLE
+# 获取域名解析列表
+$ dnsctl-tencent record list --domain yuntree.com
+
+# 查看操作日志
+$ dnsctl-aliyun domain logs --name yuntree.com
+```
+
+![tencent-domain-list](./assets/tencent-domain-list.png)
+
+![tencent-domain-lock-unlock](./assets/tencent-domain-lock-unlock.png)
+
+![tencent-record-add](./assets/tencent-record-add.png)
+
+![tencent-record-list](./assets/tencent-record-list.png)
+
 ## 构建
 
 - 二进制
@@ -101,6 +167,7 @@ make build-in-docker
 git clone github.com/chinatree/dnsctl.git
 cd dnsctl
 
+
 # Aliyun
 ## 单架构
 BUILD_FROM="alpine:3.14.2"
@@ -117,7 +184,29 @@ IMAGE="chinatree/dnsctl-aliyun:0.0.1-alpine"
 docker buildx build --no-cache \
 	-t ${IMAGE} \
 	--build-arg BUILD_FROM=${BUILD_FROM} \
-	-f build/docker/Dockerfile-Aliyun.test \
+	-f build/docker/Dockerfile-Aliyun \
+	./build/docker \
+	--platform=linux/amd64,linux/arm64 \
+	--push
+
+
+# Tencent
+## 单架构
+BUILD_FROM="alpine:3.14.2"
+IMAGE="chinatree/dnsctl-tencent:0.0.1-alpine"
+docker build --no-cache \
+	-t ${IMAGE} \
+	--build-arg BUILD_FROM=${BUILD_FROM} \
+	-f build/docker/Dockerfile-Tencent \
+	./build/docker
+
+## 多架构
+BUILD_FROM="alpine:3.14.2"
+IMAGE="chinatree/dnsctl-tencent:0.0.1-alpine"
+docker buildx build --no-cache \
+	-t ${IMAGE} \
+	--build-arg BUILD_FROM=${BUILD_FROM} \
+	-f build/docker/Dockerfile-Tencent \
 	./build/docker \
 	--platform=linux/amd64,linux/arm64 \
 	--push
@@ -132,6 +221,15 @@ docker run -it --rm \
 	-e ALIYUN_ACCESS_KEY_ID=xxxx \
 	-e ALIYUN_ACCESS_SECRET_ID=yyyy \
 	chinatree/dnsctl-aliyun:0.0.1-alpine
+```
+
+- `chinatree/dnsctl-tencent:0.0.1-alpine`
+
+```bash
+docker run -it --rm \
+	-e TENCENT_SECRET_ID=xxxx \
+	-e TENCENT_SECRET_KEY=yyyy \
+	chinatree/dnsctl-tencent:0.0.1-alpine
 ```
 
 ## 协议
