@@ -55,7 +55,7 @@ func listFunc(cmd *cobra.Command, args []string) {
 	for idx, group := range groups.DomainGroups.DomainGroup {
 		row := make([]string, 0)
 		row = append(row, strconv.Itoa(idx))
-		row = append(row, group.GroupId)
+		row = append(row, group.GroupID)
 		row = append(row, group.GroupName)
 		row = append(row, strconv.FormatInt(group.DomainCount, 10))
 

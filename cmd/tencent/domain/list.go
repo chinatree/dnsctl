@@ -39,8 +39,8 @@ func listFunc(cmd *cobra.Command, args []string) {
 	// fmt.Println(data)
 
 	// Parse Response
-	var domainList *DomainList
-	err = json.Unmarshal(resp, &domainList)
+	var domains *List
+	err = json.Unmarshal(resp, &domains)
 	if err != nil {
 		panic(err)
 	}
@@ -50,14 +50,14 @@ func listFunc(cmd *cobra.Command, args []string) {
 
 	setColor, _ := cmd.Flags().GetBool("set-color")
 	rows := make([][]string, 0)
-	for idx, domain := range domainList.Response.DomainList {
+	for idx, domain := range domains.Response.DomainList {
 		row := make([]string, 0)
 		row = append(row, strconv.Itoa(idx))
 		row = append(row, strconv.FormatUint(domain.ID, 10))
 		row = append(row, domain.Name)
 		row = append(row, strings.Join(domain.EffectiveDNS, "\n"))
 		row = append(row, strconv.FormatUint(domain.RecordCount, 10))
-		row = append(row, strconv.FormatUint(domain.GroupId, 10))
+		row = append(row, strconv.FormatUint(domain.GroupID, 10))
 		row = append(row, strconv.FormatUint(domain.TTL, 10))
 		row = append(row, statusM[strings.ToUpper(domain.Status)])
 		row = append(row, DNSStatusM[strings.ToUpper(domain.DNSStatus)])

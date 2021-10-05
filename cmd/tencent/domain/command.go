@@ -11,6 +11,7 @@ var (
 		Short: "域名管理",
 	}
 
+	// statusM 域名状态MAP
 	statusM = map[string]string{
 		"ENABLE": "正常",
 		"PAUSE":  "暂停",
@@ -18,6 +19,7 @@ var (
 		"LOCK":   "锁定",
 	}
 
+	// DNSStatusM  域名DNS状态MAP
 	DNSStatusM = map[string]string{
 		"":         "正常",
 		"DNSERROR": "DNS 不正确",

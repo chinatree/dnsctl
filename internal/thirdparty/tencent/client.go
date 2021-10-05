@@ -17,7 +17,7 @@ type Tencent struct {
 // NewClient Tencent default client
 func NewClient(region, secretID, secretKey string) (*Tencent, error) {
 	if secretID == "" || secretKey == "" {
-		return nil, errors.New("SecretID or SecretKey is required.")
+		return nil, errors.New("SecretID or SecretKey is required")
 	}
 
 	if region == "" {

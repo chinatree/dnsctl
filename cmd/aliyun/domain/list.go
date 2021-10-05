@@ -61,18 +61,18 @@ func listFunc(cmd *cobra.Command, args []string) {
 	rows := make([][]string, 0)
 	for idx, domain := range domains.Domains.Domain {
 		dnsServers := make([]string, 0)
-		for _, dnsServer := range domain.DnsServers.DnsServer {
+		for _, dnsServer := range domain.DNSServers.DNSServer {
 			dnsServers = append(dnsServers, dnsServer)
 		}
 		row := make([]string, 0)
 		row = append(row, strconv.Itoa(idx))
-		row = append(row, domain.DomainId)
+		row = append(row, domain.DomainID)
 		row = append(row, domain.DomainName)
 		row = append(row, strings.Join(dnsServers, "\n"))
 		row = append(row, strconv.FormatInt(int64(domain.RecordCount), 10))
-		row = append(row, domain.GroupId)
+		row = append(row, domain.GroupID)
 		row = append(row, domain.GroupName)
-		row = append(row, domain.ResourceGroupId)
+		row = append(row, domain.ResourceGroupID)
 		row = append(row, versionCodeM[domain.VersionCode])
 		row = append(row, domain.Remark)
 

@@ -46,25 +46,25 @@ func getFunc(cmd *cobra.Command, args []string) {
 	// fmt.Println(data)
 
 	// Parse Response
-	var domainInfo *DomainInfoResp
-	err = json.Unmarshal(resp, &domainInfo)
+	var info *InfoResp
+	err = json.Unmarshal(resp, &info)
 	if err != nil {
 		panic(err)
 	}
 
-	// data, _ := convert.StructToJSONWithIndent(domains)
+	// data, _ := convert.StructToJSONWithIndent(info)
 	// fmt.Println(data)
 
 	setColor, _ := cmd.Flags().GetBool("set-color")
-	domain := domainInfo.Response.DomainInfo
+	domain := info.Response.DomainInfo
 	rows := [][]string{
 		{
 			strconv.Itoa(0),
-			strconv.FormatUint(domain.DomainId, 10),
+			strconv.FormatUint(domain.DomainID, 10),
 			domain.Domain,
 			strings.Join(domain.DnspodNsList, "\n"),
 			strconv.FormatUint(domain.RecordCount, 10),
-			strconv.FormatUint(domain.GroupId, 10),
+			strconv.FormatUint(domain.GroupID, 10),
 			strconv.FormatUint(domain.TTL, 10),
 			statusM[strings.ToUpper(domain.Status)],
 			DNSStatusM[strings.ToUpper(domain.DNSStatus)],

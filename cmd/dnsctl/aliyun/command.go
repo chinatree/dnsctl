@@ -24,6 +24,6 @@ func init() {
 	)
 
 	Cmd.PersistentFlags().String("region-id", "default", "区域ID")
-	Cmd.PersistentFlags().String("access-key-id", "", "密钥ID")
-	Cmd.PersistentFlags().String("access-key-secret", "", "加密密钥")
+	Cmd.PersistentFlags().String("secret-id", "", "密钥ID")
+	Cmd.PersistentFlags().String("secret-key", "", "加密密钥")
 }

@@ -46,17 +46,17 @@ func getFunc(cmd *cobra.Command, args []string) {
 	// fmt.Println(data)
 
 	// Parse Response
-	var recordInfo *RecordInfoResp
-	err = json.Unmarshal(resp, &recordInfo)
+	var info *InfoResp
+	err = json.Unmarshal(resp, &info)
 	if err != nil {
 		panic(err)
 	}
 
-	// data, _ := convert.StructToJSONWithIndent(jsonData)
+	// data, _ := convert.StructToJSONWithIndent(info)
 	// fmt.Println(data)
 
 	setColor, _ := cmd.Flags().GetBool("set-color")
-	record := recordInfo.Response.RecordInfo
+	record := info.Response.RecordInfo
 	rows := [][]string{
 		{
 			strconv.Itoa(0),

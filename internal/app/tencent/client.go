@@ -15,9 +15,9 @@ var (
 
 // ParseArgs 从命令行参数获取 AccessKey
 // 	如果命令行参数未指定，则从环境变量获取
-// 	- ALIYUN_REGION_ID
-// 	- ALIYUN_ACCESS_KEY_ID
-// 	- ALIYUN_ACCESS_SECRET_ID
+// 	- TENCENT_REGION
+// 	- TENCENT_SECRET_ID
+// 	- TENCENT_SECRET_KEY
 func ParseArgs(cmd *cobra.Command, args []string) {
 	region := cmd.Flag("region").Value.String()
 	secretID := cmd.Flag("secret-id").Value.String()

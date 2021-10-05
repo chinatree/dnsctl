@@ -45,10 +45,10 @@ Available Commands:
   version     版本号
 
 Flags:
-      --access-key-id string       密钥ID
-      --access-key-secret string   加密密钥
-  -h, --help                       help for dnsctl-aliyun
-      --region-id string           区域ID (default "default")
+  -h, --help                help for dnsctl-aliyun
+      --region-id string    区域ID (default "default")
+      --secret-id string    密钥ID
+      --secret-key string   加密密钥
 
 Use "dnsctl-aliyun [command] --help" for more information about a command.
 ```
@@ -83,8 +83,8 @@ Use "dnsctl-tencent [command] --help" for more information about a command.
 
 ```bash
 # 配置鉴权信息
-export ALIYUN_ACCESS_KEY_ID=xxxx
-export ALIYUN_ACCESS_SECRET_ID=yyyy
+export ALIYUN_SECRET_ID=xxxx
+export ALIYUN_SECRET_KEY=yyyy
 
 # 添加域名分组
 dnsctl-aliyun group add --name 测试分组
@@ -260,8 +260,8 @@ docker buildx build --no-cache \
 
 ```bash
 docker run -it --rm \
-	-e ALIYUN_ACCESS_KEY_ID=xxxx \
-	-e ALIYUN_ACCESS_SECRET_ID=yyyy \
+	-e ALIYUN_SECRET_ID=xxxx \
+	-e ALIYUN_SECRET_KEY=yyyy \
 	-e TENCENT_SECRET_ID=xxxx \
 	-e TENCENT_SECRET_KEY=yyyy \
 	chinatree/dnsctl:0.0.1-alpine
@@ -271,8 +271,8 @@ docker run -it --rm \
 
 ```bash
 docker run -it --rm \
-	-e ALIYUN_ACCESS_KEY_ID=xxxx \
-	-e ALIYUN_ACCESS_SECRET_ID=yyyy \
+	-e ALIYUN_SECRET_ID=xxxx \
+	-e ALIYUN_SECRET_KEY=yyyy \
 	chinatree/dnsctl-aliyun:0.0.1-alpine
 ```
 

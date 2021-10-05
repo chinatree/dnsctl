@@ -83,7 +83,7 @@ func listFunc(cmd *cobra.Command, args []string) {
 	for idx, record := range jsonData.DomainRecords.Records {
 		row := make([]string, 0)
 		row = append(row, strconv.Itoa(idx))
-		row = append(row, record.RecordId)
+		row = append(row, record.RecordID)
 		row = append(row, record.DomainName)
 		row = append(row, record.RR)
 		row = append(row, record.Type)
@@ -176,7 +176,7 @@ func listSubFunc(cmd *cobra.Command, args []string) {
 	for idx, record := range jsonData.DomainRecords.Records {
 		row := make([]string, 0)
 		row = append(row, strconv.Itoa(idx))
-		row = append(row, record.RecordId)
+		row = append(row, record.RecordID)
 		row = append(row, record.DomainName)
 		row = append(row, record.RR)
 		row = append(row, record.Type)

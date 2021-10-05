@@ -44,7 +44,7 @@ func logsFunc(cmd *cobra.Command, args []string) {
 	// fmt.Println(data)
 
 	// Parse Response
-	var logs *DomainLogs
+	var logs *Logs
 	err = json.Unmarshal(resp, &logs)
 	if err != nil {
 		panic(err)

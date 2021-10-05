@@ -49,7 +49,7 @@ func getFunc(cmd *cobra.Command, args []string) {
 	rows := [][]string{
 		{
 			strconv.Itoa(0),
-			record.RecordId,
+			record.RecordID,
 			record.DomainName,
 			record.RR,
 			record.Type,

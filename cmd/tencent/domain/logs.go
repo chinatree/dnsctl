@@ -46,17 +46,17 @@ func logsFunc(cmd *cobra.Command, args []string) {
 	// fmt.Println(data)
 
 	// Parse Response
-	var logList *DomainLogList
-	err = json.Unmarshal(resp, &logList)
+	var logs *LogList
+	err = json.Unmarshal(resp, &logs)
 	if err != nil {
 		panic(err)
 	}
 
-	// data, _ := convert.StructToJSONWithIndent(logList)
+	// data, _ := convert.StructToJSONWithIndent(logs)
 	// fmt.Println(data)
 
 	rows := make([][]string, 0)
-	for idx, log := range logList.Response.LogList {
+	for idx, log := range logs.Response.LogList {
 		row := make([]string, 0)
 		row = append(row, strconv.Itoa(idx))
 		row = append(row, log)
