@@ -10,8 +10,8 @@ type Aliyun struct {
 }
 
 // NewClient Aliyun default client
-func NewClient(regionID, accessKeyID, accessKeySecret string) (*Aliyun, error) {
-	client, err := alidns.NewClientWithAccessKey(regionID, accessKeyID, accessKeySecret)
+func NewClient(regionID, secretID, secretKey string) (*Aliyun, error) {
+	client, err := alidns.NewClientWithAccessKey(regionID, secretID, secretKey)
 	if err != nil {
 		return nil, err
 	}

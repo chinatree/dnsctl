@@ -19,10 +19,10 @@ Available Commands:
   version     版本号
 
 Flags:
-      --access-key-id string       密钥ID
-      --access-key-secret string   加密密钥
-  -h, --help                       help for dnsctl-aliyun
-      --region-id string           区域ID (default "default")
+  -h, --help                help for dnsctl-aliyun
+      --region-id string    区域ID (default "default")
+      --secret-id string    密钥ID
+      --secret-key string   加密密钥
 
 Use "dnsctl-aliyun [command] --help" for more information about a command.
 ```
@@ -33,12 +33,12 @@ Use "dnsctl-aliyun [command] --help" for more information about a command.
 
 - 参数方式
   -  --region-id
-  - --access-key-id
-  - --access-key-secret
+  - --secret-id
+  - --secret-key
 - 环境变量
   - ALIYUN_REGION_ID
-  - ALIYUN_ACCESS_KEY_ID
-  - ALIYUN_ACCESS_SECRET_ID
+  - ALIYUN_SECRET_ID
+  - ALIYUN_SECRET_KEY
 
 ## 域名管理
 
@@ -64,9 +64,9 @@ Flags:
   -h, --help   help for domain
 
 Global Flags:
-      --access-key-id string       密钥ID
-      --access-key-secret string   加密密钥
-      --region-id string           区域ID (default "default")
+      --region-id string    区域ID (default "default")
+      --secret-id string    密钥ID
+      --secret-key string   加密密钥
 
 Use "dnsctl-aliyun domain [command] --help" for more information about a command.
 ```
@@ -135,9 +135,9 @@ Flags:
   -h, --help   help for group
 
 Global Flags:
-      --access-key-id string       密钥ID
-      --access-key-secret string   加密密钥
-      --region-id string           区域ID (default "default")
+      --region-id string    区域ID (default "default")
+      --secret-id string    密钥ID
+      --secret-key string   加密密钥
 
 Use "dnsctl-aliyun group [command] --help" for more information about a command.
 ```
@@ -199,9 +199,9 @@ Flags:
   -h, --help            help for record
 
 Global Flags:
-      --access-key-id string       密钥ID
-      --access-key-secret string   加密密钥
-      --region-id string           区域ID (default "default")
+      --region-id string    区域ID (default "default")
+      --secret-id string    密钥ID
+      --secret-key string   加密密钥
 
 Use "dnsctl-aliyun record [command] --help" for more information about a command.
 ```

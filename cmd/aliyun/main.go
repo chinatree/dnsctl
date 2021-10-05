@@ -39,8 +39,8 @@ func main() {
 	)
 
 	rootCmd.PersistentFlags().String("region-id", "default", "区域ID")
-	rootCmd.PersistentFlags().String("access-key-id", "", "密钥ID")
-	rootCmd.PersistentFlags().String("access-key-secret", "", "加密密钥")
+	rootCmd.PersistentFlags().String("secret-id", "", "密钥ID")
+	rootCmd.PersistentFlags().String("secret-key", "", "加密密钥")
 
 	if err := rootCmd.Execute(); err != nil {
 		panic(err)
