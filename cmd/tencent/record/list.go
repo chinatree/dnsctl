@@ -56,8 +56,8 @@ func listFunc(cmd *cobra.Command, args []string) {
 	// fmt.Println(data)
 
 	// Parse Response
-	var recordList *RecordList
-	err = json.Unmarshal(resp, &recordList)
+	var records *Records
+	err = json.Unmarshal(resp, &records)
 	if err != nil {
 		panic(err)
 	}
@@ -67,7 +67,7 @@ func listFunc(cmd *cobra.Command, args []string) {
 
 	setColor, _ := cmd.Flags().GetBool("set-color")
 	rows := make([][]string, 0)
-	for idx, record := range recordList.Response.RecordList {
+	for idx, record := range records.Response.RecordList {
 		row := make([]string, 0)
 		row = append(row, strconv.Itoa(idx))
 		row = append(row, strconv.FormatUint(record.ID, 10))

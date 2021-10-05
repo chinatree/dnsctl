@@ -56,7 +56,7 @@ func logsFunc(cmd *cobra.Command, args []string) {
 	// fmt.Println(data)
 
 	// Parse Response
-	var logs *RecordLogs
+	var logs *Logs
 	err = json.Unmarshal(resp, &logs)
 	if err != nil {
 		panic(err)
@@ -66,7 +66,7 @@ func logsFunc(cmd *cobra.Command, args []string) {
 	// fmt.Println(data)
 
 	rows := make([][]string, 0)
-	for idx, log := range logs.RecordLogs.RecordLog {
+	for idx, log := range logs.Logs.RecordLog {
 		row := make([]string, 0)
 		row = append(row, strconv.Itoa(idx))
 		row = append(row, time.Unix(log.ActionTimestamp/1e3, 0).Format("2006-01-02 15:04:05"))

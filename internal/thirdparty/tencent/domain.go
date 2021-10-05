@@ -111,7 +111,7 @@ func (sdk *Tencent) LockDomain(name string, id, day uint64) ([]byte, error) {
 	return []byte(response.ToJsonString()), nil
 }
 
-// LockDomain 域名锁定解锁
+// UnlockDomain 域名锁定解锁
 func (sdk *Tencent) UnlockDomain(name, code string, id uint64) ([]byte, error) {
 	request := dnspod.NewModifyDomainUnlockRequest()
 	request.Domain = &name

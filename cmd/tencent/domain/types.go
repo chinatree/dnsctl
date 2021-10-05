@@ -1,16 +1,18 @@
 package domain
 
-type DomainList struct {
+// List 域名列表
+type List struct {
 	Response struct {
 		// 列表页统计信息
-		DomainCountInfo DomainCountInfo `json:"DomainCountInfo"`
+		DomainCountInfo CountInfo `json:"DomainCountInfo"`
 		// 域名列表
 		DomainList []Domain `json:"DomainList"`
 		RequestID  string   `json:"RequestId"`
 	} `json:"Response"`
 }
 
-type DomainCountInfo struct {
+// CountInfo 域名的统计信息
+type CountInfo struct {
 	// 符合条件的域名数量
 	DomainTotal uint64 `json:"DomainTotal"`
 	// 用户可以查看的所有域名数量
@@ -37,6 +39,7 @@ type DomainCountInfo struct {
 	GroupTotal uint64 `json:"GroupTotal"`
 }
 
+// Domain 域名信息
 type Domain struct {
 	DNSStatus    string   `json:"DNSStatus"`
 	EffectiveDNS []string `json:"EffectiveDNS"`
@@ -46,7 +49,7 @@ type Domain struct {
 	Grade        string   `json:"Grade"`
 	GradeLevel   uint64   `json:"GradeLevel"`
 	GradeTitle   string   `json:"GradeTitle"`
-	GroupId      uint64   `json:"GroupId"`
+	GroupID      uint64   `json:"GroupId"`
 	IsVip        string   `json:"IsVip"`
 	Remark       string   `json:"Remark"`
 	Status       string   `json:"Status"`
@@ -54,23 +57,25 @@ type Domain struct {
 	Owner        string   `json:"Owner"`
 }
 
-type DomainInfoResp struct {
+// InfoResp 域名信息返回体
+type InfoResp struct {
 	Response struct {
-		DomainInfo DomainInfo `json:"DomainInfo"`
-		RequestID  string     `json:"RequestId"`
+		DomainInfo Info   `json:"DomainInfo"`
+		RequestID  string `json:"RequestId"`
 	} `json:"Response"`
 }
 
-type DomainInfo struct {
+// Info 域名信息
+type Info struct {
 	DNSStatus    string   `json:"DNSStatus"`
-	DomainId     uint64   `json:"DomainId"`
+	DomainID     uint64   `json:"DomainId"`
 	DnspodNsList []string `json:"DnspodNsList"`
 	Domain       string   `json:"Domain"`
 	RecordCount  uint64   `json:"RecordCount"`
 	Grade        string   `json:"Grade"`
 	GradeLevel   uint64   `json:"GradeLevel"`
 	GradeTitle   string   `json:"GradeTitle"`
-	GroupId      uint64   `json:"GroupId"`
+	GroupID      uint64   `json:"GroupId"`
 	IsVip        string   `json:"IsVip"`
 	Remark       string   `json:"Remark"`
 	Status       string   `json:"Status"`
@@ -78,7 +83,8 @@ type DomainInfo struct {
 	Owner        string   `json:"Owner"`
 }
 
-type DomainLogList struct {
+// LogList 域名操作日志列表
+type LogList struct {
 	Response struct {
 		LogList    []string `json:"LogList"`
 		PageSize   uint64   `json:"PageSize"`

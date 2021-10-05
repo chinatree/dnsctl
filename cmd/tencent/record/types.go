@@ -1,14 +1,16 @@
 package record
 
-type RecordList struct {
+// Records 解析记录列表
+type Records struct {
 	Response struct {
-		RecordCountInfo RecordCountInfo `json:"RecordCountInfo"`
-		RecordList      []Record        `json:"RecordList"`
-		RequestID       string          `json:"RequestId"`
+		RecordCountInfo CountInfo `json:"RecordCountInfo"`
+		RecordList      []Record  `json:"RecordList"`
+		RequestID       string    `json:"RequestId"`
 	} `json:"Response"`
 }
 
-type RecordCountInfo struct {
+// CountInfo 解析记录统计信息
+type CountInfo struct {
 	// 符合条件的域名数量
 	DomainTotal uint64 `json:"DomainTotal"`
 	// 用户可以查看的所有域名数量
@@ -35,10 +37,11 @@ type RecordCountInfo struct {
 	GroupTotal uint64 `json:"GroupTotal"`
 }
 
+// Record 解析记录信息
 type Record struct {
 	ID      uint64 `json:"RecordId"`
 	Line    string `json:"Line"`
-	LineId  string `json:"LineId"`
+	LineID  string `json:"LineId"`
 	Name    string `json:"Name"`
 	Remark  string `json:"Remark"`
 	Status  string `json:"Status"`
@@ -49,14 +52,16 @@ type Record struct {
 	Weight  uint64 `json:"Weight"`
 }
 
-type RecordInfoResp struct {
+// InfoResp 解析记录信息返回体
+type InfoResp struct {
 	Response struct {
-		RecordInfo RecordInfo `json:"RecordInfo"`
-		RequestID  string     `json:"RequestId"`
+		RecordInfo Info   `json:"RecordInfo"`
+		RequestID  string `json:"RequestId"`
 	} `json:"Response"`
 }
 
-type RecordInfo struct {
+// Info 解析记录信息
+type Info struct {
 	DomainID uint64 `json:"DomainId"`
 	Enabled  uint64 `json:"Enabled"`
 	ID       uint64 `json:"Id"`

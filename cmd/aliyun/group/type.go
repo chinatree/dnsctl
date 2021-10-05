@@ -1,5 +1,6 @@
 package group
 
+// DomainGroups 域名分组列表
 type DomainGroups struct {
 	DomainGroups struct {
 		DomainGroup []DomainGroup `json:"DomainGroup"`
@@ -10,8 +11,9 @@ type DomainGroups struct {
 	TotalCount int    `json:"TotalCount"`
 }
 
+// DomainGroup 域名分组信息
 type DomainGroup struct {
 	DomainCount int64  `json:"DomainCount"`
-	GroupId     string `json:"GroupId"`
+	GroupID     string `json:"GroupId"`
 	GroupName   string `json:"GroupName"`
 }

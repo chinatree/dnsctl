@@ -63,18 +63,18 @@ func getFunc(cmd *cobra.Command, args []string) {
 	}
 
 	dnsServers := make([]string, 0)
-	for _, dnsServer := range domain.DnsServers.DnsServer {
+	for _, dnsServer := range domain.DNSServers.DNSServer {
 		dnsServers = append(dnsServers, dnsServer)
 	}
 	rows := [][]string{
 		{
 			strconv.Itoa(0),
-			domain.DomainId,
+			domain.DomainID,
 			domain.DomainName,
 			strings.Join(dnsServers, "\n"),
-			domain.GroupId,
+			domain.GroupID,
 			domain.GroupName,
-			domain.ResourceGroupId,
+			domain.ResourceGroupID,
 			versionCodeM[domain.VersionCode],
 			domain.Remark,
 		},
