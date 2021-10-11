@@ -33,7 +33,7 @@ RUN set -eux; \
     cd /opt; \
     file=${PACKAGE_NAME}-${PACKAGE_VERSION}-${arch}.tar.gz; \
     prefix=${PACKAGE_NAME}-${PACKAGE_VERSION}; \
-    wget -O ${file} ${DOWNLOAD_URL}${DOWNLOAD_URI}/${file}; \
+    wget --no-check-certificate -O ${file} ${DOWNLOAD_URL}${DOWNLOAD_URI}/${file}; \
     tar xf ${file}; \
     rm -f ${file}; \
     ln -s ${prefix} ${PACKAGE_NAME}; \
