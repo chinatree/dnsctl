@@ -9,7 +9,7 @@
 
 ## 帮助
 
--  Dnsctl - 一个 `aliyun` 和 `tencent` 集合的工具，即同时拥有管理阿里云解析DNS和腾讯云解析DNS功能。
+-  Dnsctl - 阿里云解析DNS和腾讯云解析DNS CLI 管理工具。
 
 ```bash
 dnsctl is a simple command line client for cloud dns.
