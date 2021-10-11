@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	// Client Aliyun 实例
+	// Client Tencent 实例
 	Client *tencent.Tencent
 )
 
